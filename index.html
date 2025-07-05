@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Frog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🐸 Flappy Frog 🐸</h1>
+        <div class="music-controls">
+            <button id="musicBtn">🔊 Muzică: Pornit</button>
+        </div>
+    </header>
+    
+    <main>
+        <div id="game">
+            <div id="score">Score: 0</div>
+            <div id="block"></div>
+            <div id="hole"></div>
+            <div id="character"></div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Flappy Frog - Joc creat de Marian Koman ❤️</p>
+        <p>Apasă click pentru săritură! | Scorul crește când treci prin gaură!</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/people/Marian-Koman/pfbid0rz2XwrdQ4r7aww4FoGudQ7yNM7tXPBAq2V1Fnm998TmJhmehc1YXnFCH4JHnsGjol" class="social-icon">📘 Facebook</a>
+            <a href="https://www.instagram.com/koman.marian/" class="social-icon">📷 Instagram</a>
+            <a href="https://discord.gg/5D8TsAJA" class="social-icon">💬 Discord</a>
+            <a href="https://www.linkedin.com/in/koman-marian-413005308/" class="social-icon">💼 LinkedIn</a>
+        </div>
+    </footer>
+    
+    <audio id="bgMusic" loop>
+        <source src="muzica.mp3" type="audio/mpeg">
+    </audio>
+</body>
+<script src="script.js"></script>
+</html>
