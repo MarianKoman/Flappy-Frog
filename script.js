@@ -4,13 +4,23 @@ var character = document.getElementById("character");
 var scoreDiv = document.getElementById("score");
 var musicBtn = document.getElementById("musicBtn");
 var bgMusic = document.getElementById("bgMusic");
+var playBtn = document.getElementById("playBtn");
+var playOverlay = document.getElementById("playOverlay");
 
 var jumping = 0;
 var counter = 0;
 var score = 0;
 var musicOn = true;
+var gameStarted = false;
 
-document.addEventListener('click', jump);
+// Play Button
+playBtn.addEventListener('click', function() {
+    playOverlay.style.display = 'none';
+    gameStarted = true;
+    document.addEventListener('click', jump);
+    score = 0;
+    scoreDiv.textContent = 'Score: ' + score;
+});
 
 // Music Button
 musicBtn.addEventListener('click', function() {
@@ -28,11 +38,14 @@ hole.addEventListener('animationiteration', () => {
     var random = -((Math.random()*300)+150);
     hole.style.top = random + "px";
     counter++;
-    score++;
-    scoreDiv.textContent = 'Score: ' + score;
+    if(gameStarted) {
+        score++;
+        scoreDiv.textContent = 'Score: ' + score;
+    }
 });
 
 setInterval(function(){
+    if(!gameStarted) return;
     var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
     if(jumping==0){
         character.style.top = (characterTop+3)+"px";
@@ -46,10 +59,13 @@ setInterval(function(){
         counter=0;
         score=0;
         scoreDiv.textContent = 'Score: ' + score;
+        gameStarted = false;
+        playOverlay.style.display = 'flex';
     }
 },10);
 
 function jump(){
+    if(!gameStarted) return;
     jumping = 1;
     let jumpCount = 0;
     var jumpInterval = setInterval(function(){
